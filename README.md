@@ -6,7 +6,6 @@ cd TourOfHeroes
 npm i
 ng serve
 ```
-
 ## _Hero Form_
 https://angular.io/guide/forms
 ```sh
@@ -18,4 +17,5 @@ ng serve
 ```sh
 cd TestingJest
 npm i
+npm run test:watch
 ```
