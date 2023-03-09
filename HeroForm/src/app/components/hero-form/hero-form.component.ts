@@ -17,6 +17,10 @@ export class HeroFormComponent {
     this.submitted = true;
   }
 
+  newHero() {
+    this.model = new Hero(42, '', '');
+  }
+
   skyDog(): Hero {
     const myHero = new Hero(
       42,
@@ -27,4 +31,14 @@ export class HeroFormComponent {
     console.log('My hero is called ' + myHero.name); // "My hero is called SkyDog"
     return myHero;
   }
+
+  //////// NOT SHOWN IN DOCS ////////
+
+  // Reveal in html:
+  //   Name via form.controls = {{showFormControls(heroForm)}}
+  showFormControls(form: any) {
+    return form && form.controls.name && form.controls.name.value; // Dr. IQ
+  }
+
+  /////////////////////////////
 }
