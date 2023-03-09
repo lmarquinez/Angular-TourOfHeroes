@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HeroSearchComponent } from './hero-search.component';
+import { HeroSearchComponent } from '../../src/app/components/hero-search/hero-search.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HeroSearchComponent', () => {
   let component: HeroSearchComponent;
@@ -8,9 +8,9 @@ describe('HeroSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroSearchComponent ]
-    })
-    .compileComponents();
+      imports: [HttpClientTestingModule],
+      declarations: [HeroSearchComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HeroSearchComponent);
     component = fixture.componentInstance;

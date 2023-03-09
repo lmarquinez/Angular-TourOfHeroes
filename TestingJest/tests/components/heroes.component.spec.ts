@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HeroesComponent } from './heroes.component';
+import { HeroesComponent } from '../../src/app/components/heroes/heroes.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HeroesComponent', () => {
   let component: HeroesComponent;
@@ -8,9 +8,9 @@ describe('HeroesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeroesComponent ]
-    })
-    .compileComponents();
+      imports: [HttpClientTestingModule],
+      declarations: [HeroesComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HeroesComponent);
     component = fixture.componentInstance;
