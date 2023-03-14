@@ -20,6 +20,14 @@ npm i
 ng serve
 ```
 
+## _Testing with Jasmine/Karma on TourOfHeroes_
+
+```sh
+cd TestingJest
+npm i
+ng test
+```
+
 ## _Testing with Jest on TourOfHeroes_
 
 ```sh

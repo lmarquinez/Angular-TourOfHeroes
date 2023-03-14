@@ -1,2 +1,4 @@
 ﻿TourOfHeroes/.vscode
 .vscode
+TestingJest/tests/__snapshots__
+TestingJest/tests/components/__snapshots__
