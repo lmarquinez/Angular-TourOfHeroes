@@ -13,7 +13,11 @@ describe('InMemoryDataService', () => {
     service = TestBed.inject(InMemoryDataService);
   });
 
+  /* Checking if the service is created and defined. */
   it('should be created', () => {
+    /* Checking if the service is created. */
     expect(service).toBeTruthy();
+    /* Checking if the service is defined. */
+    expect(service).toBeDefined();
   });
 });
