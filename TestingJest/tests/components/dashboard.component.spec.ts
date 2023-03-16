@@ -81,7 +81,7 @@ describe('DashboardComponent', () => {
   /* This test is checking if the top heroes are loaded. */
   it('should load top heroes', () => {
     const topHeroes = heroes.slice(1, 5).length;
-    component.ngOnInit();
+
     expect(component.heroes.length).toBe(topHeroes);
     expect(debugElements.length).toBe(topHeroes);
   });

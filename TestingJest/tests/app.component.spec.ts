@@ -68,7 +68,9 @@ describe('AppComponent', () => {
     const btn_heroes =
       fixture.debugElement.nativeElement.querySelector('#btn_heroes');
     const buttonSpy = jest.spyOn(btn_heroes, 'click');
+
     btn_heroes.click();
+
     expect(buttonSpy).toHaveBeenCalled();
     expect(navigateSpy).toHaveBeenCalledWith(['/heroes']);
   });
@@ -79,7 +81,9 @@ describe('AppComponent', () => {
     const btn_dashboard =
       fixture.debugElement.nativeElement.querySelector('#btn_dashboard');
     const buttonSpy = jest.spyOn(btn_dashboard, 'click');
+
     btn_dashboard.click();
+
     expect(buttonSpy).toHaveBeenCalled();
     expect(navigateSpy).toHaveBeenCalledWith(['/dashboard']);
   });
