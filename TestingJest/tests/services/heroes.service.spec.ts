@@ -1,10 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { HeroesService } from '../../src/app/services/heroes.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { Hero } from 'src/app/interfaces/hero.interface';
+import { Observable } from 'rxjs';
 
 describe('HeroesService', () => {
   let service: HeroesService;
+  let httpMock: HttpTestingController;
 
   const heroes = [
     { id: 12, name: 'Dr. Nice' },
@@ -24,7 +29,12 @@ describe('HeroesService', () => {
     });
 
     service = TestBed.inject(HeroesService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
+
+  // afterEach(() => {
+  //   httpMock.verify();
+  // });
 
   /* Checking if the service is created and defined. */
   it('should be created', () => {
@@ -84,10 +94,21 @@ describe('HeroesService', () => {
     const addHeroSpy = jest.spyOn(service, 'addHero');
     const newHero: Hero = { id: 21, name: 'Hercules' };
 
-    service.addHero(newHero);
-    service.getHeroes().subscribe((arrHeroes) => {
-      expect(arrHeroes).toBe(heroes.length + 1);
+    // Mock the http post function
+    const httpSpy = jest.spyOn(service['http'], 'post');
+
+    // Call the addItem function
+    service.addHero(newHero).subscribe((result) => {
+      expect(result).toEqual(newHero);
     });
+
+    // Verify the http post function was called with the correct arguments
+    const req = httpMock.expectOne(service['heroesUrl']);
+    expect(req.request.method).toEqual('POST');
+    expect(req.request.body).toEqual(newHero);
+
+    // Return a response to the http post function
+    req.flush(newHero);
 
     expect(addHeroSpy).toHaveBeenCalled();
     expect(addHeroSpy).toHaveBeenCalledTimes(1);
